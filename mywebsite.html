@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Redstone Engineer | Master Engineering Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#2592ff",
+                    "secondary-container": "#ffbf00",
+                    "surface-container-high": "#392520",
+                    "error": "#ffb4ab",
+                    "secondary": "#ffe2ab",
+                    "inverse-on-surface": "#402c26",
+                    "on-primary-container": "#541100",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary": "#a5c8ff",
+                    "primary-fixed-dim": "#ffb5a0",
+                    "on-surface": "#fddbd3",
+                    "on-primary-fixed": "#3b0900",
+                    "on-surface-variant": "#e7bdb2",
+                    "surface-dim": "#1f0f0b",
+                    "surface-container": "#2d1b16",
+                    "background": "#0A0A0A",
+                    "inverse-surface": "#fddbd3",
+                    "on-secondary": "#402d00",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#ad887e",
+                    "error-container": "#93000a",
+                    "surface-tint": "#ffb5a0",
+                    "on-secondary-container": "#6d5000",
+                    "on-error": "#690005",
+                    "on-primary": "#601400",
+                    "secondary-fixed-dim": "#fbbc00",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-tertiary-container": "#002a53",
+                    "surface": "#1f0f0b",
+                    "on-background": "#fddbd3",
+                    "surface-container-lowest": "#190a06",
+                    "primary": "#FF4500",
+                    "outline-variant": "#5d4038",
+                    "on-tertiary": "#00315e",
+                    "surface-variant": "#44302a",
+                    "primary-fixed": "#ffdbd1",
+                    "surface-bright": "#49342f",
+                    "inverse-primary": "#b12d00",
+                    "surface-container-low": "#291712",
+                    "on-tertiary-fixed": "#001c3a",
+                    "primary-container": "#ff5625",
+                    "tertiary-fixed-dim": "#a5c8ff",
+                    "on-primary-fixed-variant": "#872000",
+                    "secondary-fixed": "#ffdfa0",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-tertiary-fixed-variant": "#004785",
+                    "surface-container-highest": "#44302a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Space Grotesk"],
+                    "h2": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "code": ["Inter"],
+                    "h3": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code": ["14px", {"lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #fddbd3;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(255, 69, 0, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-red {
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+        }
+        .circuit-line {
+            background: linear-gradient(90deg, transparent, rgba(255, 69, 0, 0.4), transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<nav class="bg-[#121212]/70 backdrop-blur-xl fixed top-0 w-full border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-8 h-16 z-50">
+<div class="text-2xl font-bold tracking-tighter text-[#FF4500] drop-shadow-[0_0_10px_rgba(255,69,0,0.4)] font-['Space_Grotesk']">
+            Redstone Engineer
+        </div>
+<div class="hidden md:flex gap-8 items-center font-['Space_Grotesk'] tracking-tight">
+<a class="text-[#FF4500] border-b-2 border-[#FF4500] pb-1" href="#">Ecosystem</a>
+<a class="text-white/60 hover:text-white transition-colors" href="#monoliths">Monoliths</a>
+<a class="text-white/60 hover:text-white transition-colors" href="#experiments">Experiments</a>
+<a class="text-white/60 hover:text-white transition-colors" href="#lab">Lab</a>
+</div>
+<button class="border border-[#FF4500] text-[#FF4500] px-6 py-1.5 rounded-sm hover:bg-[#FF4500] hover:text-white transition-all duration-300 scale-95 active:scale-90 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold">
+            Connect
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-24 px-8 min-h-[819px] flex flex-col justify-center items-center text-center overflow-hidden">
+<!-- Technical Background Grid / Glow -->
+<div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF4500]/10 blur-[120px] rounded-full"></div>
+<div class="absolute top-0 left-0 w-full h-full" style="background-image: linear-gradient(rgba(255,69,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,69,0,0.1) 1px, transparent 1px); background-size: 100px 100px;"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto">
+<div class="inline-flex items-center gap-2 px-3 py-1 mb-8 border border-[#FF4500]/30 bg-[#FF4500]/5 text-[#FF4500] text-xs font-label-caps uppercase tracking-widest rounded-full">
+<span class="w-1.5 h-1.5 bg-[#FF4500] rounded-full animate-pulse"></span>
+                System Online: v2.4.0
+            </div>
+<h1 class="font-h1 text-h1 text-white mb-6 leading-none">
+                Mastering large-scale builds &amp; <br class="hidden md:block"/><span class="text-[#FF4500]">playful experiments</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                Big projects live on their own domains. Small sparks live on subdomains — all curated here in the Redstone terminal.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="border border-[#FF4500] text-white px-10 py-4 font-label-caps tracking-widest uppercase hover:bg-[#FF4500] transition-all duration-500 glow-red" href="#monoliths">
+                    Explore Ecosystem
+                </a>
+<a class="border border-white/20 text-white/70 px-10 py-4 font-label-caps tracking-widest uppercase hover:bg-white/5 transition-all duration-300" href="#experiments">
+                    View Subdomains
+                </a>
+</div>
+</div>
+</header>
+<!-- Monoliths Section -->
+<section class="py-24 px-8 max-w-7xl mx-auto" id="monoliths">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-h2 text-h2 text-white">⚡ Monoliths · <span class="text-white/40">Dedicated Domains</span></h2>
+<div class="flex-grow circuit-line"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Monolith Card 1 -->
+<div class="glass-panel p-8 group relative overflow-hidden flex flex-col h-full">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-[#FF4500]">domain</span>
+</div>
+<div class="mb-6 relative h-48 overflow-hidden rounded-sm border border-white/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A futuristic data center corridor with rows of server racks glowing with intense red and orange LED lights. The atmosphere is highly technical and sophisticated, with glass floors reflecting the neon illumination. This represents a high-performance monolith server architecture in a dark, high-contrast digital environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbE9983juZB9eoJ_1uY-9kapNW5LWhCG6fJgz-nQCwiuDn1dV-n6kJzomDE2IlB6s9POeGKWguBwN-JBrwcsNv4uS8BMfzlCv4aMOSFj9DAYb8h_0dX8BWbIgLZ48wKgH2SidWKwgyKPnecaZ_VM7qryfHmNUIpwXLtOa0yKcSqiL7NS2TGwGHKRXgJee9t6wGPopdXpaT39lORjN3PCThTTB6gUX5yEiAXtxSQ-wdeNIyXQWodTU82oeMwkrBqnbzSr_HSBJeihY"/>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Titan-Engine.io</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">A massive high-throughput data processing engine designed for real-time analytics across distributed clusters.</p>
+<a class="inline-flex items-center gap-2 text-[#FF4500] font-label-caps uppercase tracking-widest group-hover:translate-x-2 transition-transform" href="#">
+                    Visit Project <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Monolith Card 2 -->
+<div class="glass-panel p-8 group relative overflow-hidden flex flex-col h-full">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-[#FF4500]">hub</span>
+</div>
+<div class="mb-6 relative h-48 overflow-hidden rounded-sm border border-white/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Close-up of a high-tech circuit board with intricate copper paths glowing with vibrant amber light. The depth of field is shallow, focusing on a central processor unit. The visual style is dark technical minimalism with high-energy accents, emphasizing precision engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9azYxnfr4UrVdHY1KW5Z_anktn9V8o0ulNizn9vAzySbLGG0Q-BDYBk0kVaSA68DaFX4-xq9sKcKPRoWDwOz0n5OYzoDezI12_E1rsGof6Ov-m-5ZuYTtaWkpc2SAYKLKug4mP5d8_bpw6AfLGZouRf6DFla1WNAxBxC_77hVOvsGfRdPSE_s-03P64QbDyH8gPXkBBkZuyXLkQ2XkGNfFXMOPRQWk9qED7PkFDYcg6FSXzlcXBDzIItkJjlJYwes9HMXtfW7Mqo"/>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">CoreSystems.tech</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">A proprietary framework for building low-latency micro-frontends with integrated redstone-logic automation.</p>
+<a class="inline-flex items-center gap-2 text-[#FF4500] font-label-caps uppercase tracking-widest group-hover:translate-x-2 transition-transform" href="#">
+                    Visit Project <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Monolith Card 3 -->
+<div class="glass-panel p-8 group relative overflow-hidden flex flex-col h-full">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-[#FF4500]">dynamic_form</span>
+</div>
+<div class="mb-6 relative h-48 overflow-hidden rounded-sm border border-white/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A stylized digital globe composed of millions of glowing data points and lines of connection, floating in a dark obsidian space. Pulsating red energy flows travel across its surface. The mood is epic and global, reflecting a massive interconnected network system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYyFRSRFQd77beIxPp783lkagN_2bhCHdGL_p9o3q5GWWDXHqCbgoNGTCb7LdbVc4hdFOGVMdmORKYKgiirSI94TMdwMcduci9QmDzmooKdxmDy9aRrvMYkiVWJkJ72vrrsRtHZgdbpBApicRHMOt9cSvwOTzMLp1A77eKvwTaeTVR7ea7KZRRlBRPVZwDsxOl2dku8GeMI-CGq2peMUh-omhgI51ac06WzFDWp1s4eP-CiIdPjCpI5dmlpWUYbb-jhh26tO3aWcY"/>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">GlobalLink.net</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">A decentralized node network infrastructure connecting regional data centers through a secure encrypted tunnel.</p>
+<a class="inline-flex items-center gap-2 text-[#FF4500] font-label-caps uppercase tracking-widest group-hover:translate-x-2 transition-transform" href="#">
+                    Visit Project <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Experiments Section -->
+<section class="py-24 bg-[#0A0A0A] border-y border-white/5 relative" id="experiments">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="font-h2 text-h2 text-white mb-2">🌀 Experiments · <span class="text-secondary-container">Subdomain Fleet</span></h2>
+<p class="text-on-surface-variant font-body-lg">Every small project gets its own subdomain under redstoneengineer.site</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Experiment 1 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">auto_fix_high</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">PixelForge</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">pixelforge.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">A lightweight procedural texture generator for technical 3D models.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Rust</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Wasm</span>
+</div>
+</div>
+<!-- Experiment 2 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">query_stats</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">FluxDashboard</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">flux.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">Real-time metrics visualizer for stream processing pipelines.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">React</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">D3.js</span>
+</div>
+</div>
+<!-- Experiment 3 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">build</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">Redstone Tools</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">tools.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">A collection of encoders, decoders, and logic gate simulators.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Vue</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Terminal</span>
+</div>
+</div>
+<!-- Experiment 4 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">view_in_ar</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">Voxel Playground</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">voxel.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">Browser-based voxel editor for quick isometric engineering sketches.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Three.js</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">WebGPU</span>
+</div>
+</div>
+<!-- Experiment 5 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">terminal</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">Command Studio</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">cmd.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">Interactive command-line interface for remote project management.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Go</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">SSH</span>
+</div>
+</div>
+<!-- Experiment 6 -->
+<div class="p-6 border border-white/10 bg-white/5 hover:border-[#FFBF00]/40 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[#FFBF00] material-symbols-outlined">sports_esports</span>
+<div class="bg-[#FFBF00]/10 text-[#FFBF00] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">.site</div>
+</div>
+<h4 class="font-h3 text-xl text-white mb-1">Mini Game Hub</h4>
+<p class="text-xs font-mono text-[#FFBF00] mb-3">arcade.redstoneengineer.site</p>
+<p class="text-on-surface-variant text-sm mb-4">Experimental physics-based mini-games built with modern engines.</p>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Phaser</span>
+<span class="text-[10px] border border-white/10 px-2 py-0.5 text-white/40 uppercase">Socket.io</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Invention Lab Section -->
+<section class="py-24 px-8 max-w-7xl mx-auto" id="lab">
+<div class="glass-panel p-12 relative overflow-hidden border-dashed border-2 border-[#FF4500]/20 flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #FF4500 0, #FF4500 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-7xl text-white/10 animate-pulse">science</span>
+</div>
+<h2 class="font-h2 text-h2 text-white mb-4">Invention Lab</h2>
+<p class="text-on-surface-variant max-w-lg mb-8">
+                This is a technical experiment slot. Future innovations, quantum-logic prototypes, and neural network bridges are currently in incubation.
+            </p>
+<div class="flex items-center gap-4 bg-black/40 px-6 py-3 rounded-sm border border-white/10">
+<span class="text-[#FF4500] font-mono text-sm tracking-widest uppercase">Status: </span>
+<span class="text-white/40 font-mono text-sm tracking-widest uppercase italic">Coming Soon</span>
+<div class="w-12 h-1 bg-white/5 overflow-hidden rounded-full relative">
+<div class="absolute inset-0 bg-[#FF4500] w-1/3 animate-ping opacity-50"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="bg-[#0A0A0A] w-full border-t border-[#FF4500]/20 py-12">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-10">
+<div class="flex flex-col gap-2">
+<div class="text-lg font-black text-[#FF4500] font-['Space_Grotesk'] uppercase tracking-widest">
+                    redstoneengineer.site
+                </div>
+<p class="text-white/40 text-xs font-['Space_Grotesk'] tracking-widest uppercase">
+                    All subdomains are live experiments — part of the Redstone universe.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-['Space_Grotesk'] text-sm uppercase tracking-widest">
+<a class="text-white/40 hover:text-[#FFBF00] transition-colors" href="#">Documentation</a>
+<a class="text-white/40 hover:text-[#FFBF00] transition-colors" href="#">System Status</a>
+<a class="text-white/40 hover:text-[#FFBF00] transition-colors" href="#">Privacy Protocol</a>
+<a class="text-white/40 hover:text-[#FFBF00] transition-colors" href="#">Terminal</a>
+</div>
+<div class="text-white/30 text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em]">
+                © 2024 Redstone Engineer Hub. All circuits operational.
+            </div>
+</div>
+</footer>
+</body></html>
